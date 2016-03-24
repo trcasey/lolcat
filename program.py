@@ -1,4 +1,5 @@
 import os
+import cat_service
 
 
 def main():
@@ -6,7 +7,7 @@ def main():
 
     folder = get_or_create_output_folder()
     print('Found or created folder: ' + folder)
-
+    download_cats(folder)
     # download cats
     # display cats
 
@@ -30,6 +31,11 @@ def get_or_create_output_folder():
 
     return full_path
 
+def download_cats(folder):
+    cat_count = 8
+    for i in range(1, cat_count + 1):
+        name = 'lolcat_{}'.format(i)
+        cat_service.get_cat(folder, name)
 
 if __name__ == '__main__':
     main()
