@@ -35,7 +35,22 @@ def download_cats(folder):
     cat_count = 8
     for i in range(1, cat_count + 1):
         name = 'lolcat_{}'.format(i)
+        print('Downloading cat ' + name)
         cat_service.get_cat(folder, name)
+
+    print('Done.')
+
+def display_cats(folder):
+    #open folder
+    print('Displaying cats in OS window.')
+    if platform.system() == 'Darwin':
+        subprocess.call(['open', folder])
+    elif platfrom.system() == 'windows':
+        subprocess.call(['explorer', folder])
+    elif platform.system() == 'Linux':
+        subprocess.call(['xdg-open', folder])
+    else:
+        print("We don't support your os: " + platform.system())
 
 if __name__ == '__main__':
     main()
